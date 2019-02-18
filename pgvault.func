@@ -65,7 +65,7 @@ rclonelist () {
 }
 
 pgboxrecall () {
-  ls -p /opt/plexguide/containers | grep -v / > /var/plexguide/pgvault.apprecall
+  ls -p /opt/coreapps/apps | grep -v / > /var/plexguide/pgvault.apprecall
   while read p; do
     sed -i "/^$p\b/Id" /var/plexguide/pgvault.apprecall
   done </opt/pgvault/exempt.list
