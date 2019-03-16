@@ -412,7 +412,7 @@ tee <<-EOF
 🚀 PG Vault ~ Data Storage             📓 Reference: pgvault.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📂 App Data to Backup
+📂 App Data available to Backup
 
 $notrun
 
@@ -453,7 +453,7 @@ tee <<-EOF
 🚀 PG Vault ~ Data Recall              📓 Reference: pgvault.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📂 App Data to Restore
+📂 App Data available to Restore
 
 $notrun
 
