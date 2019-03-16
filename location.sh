@@ -41,7 +41,7 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 sleep 3
-bash /opt/plexguide/menu/serverid/serverid.sh
+bash /opt/plexguide/menu/interface/serverid.sh
 exit
 else
 
