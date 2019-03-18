@@ -412,7 +412,7 @@ tee <<-EOF
 🚀 PG Vault ~ Data Storage             📓 Reference: pgvault.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📂 Potential Data to Backup
+📂 App Data available to Backup
 
 $notrun
 
@@ -453,15 +453,15 @@ tee <<-EOF
 🚀 PG Vault ~ Data Recall              📓 Reference: pgvault.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📂 Potential Data to Restore
+📂 App Data available to Restore
 
 $notrun
 
-💾 Apps Queued for Backup
+💾 Apps Queued for Restore
 
 $buildup
 
-💬 Quitting? TYPE > exit | 💪 Ready to Backup? TYPE > deploy
+💬 Quitting? TYPE > exit | 💪 Ready to Restore? TYPE > deploy
 EOF
 read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed < /dev/tty
 
@@ -510,10 +510,10 @@ EOF
     primaryinterface
   elif [ "$typed" == "3" ]; then
     echo "0" > /var/plexguide/server.id.stored
-    bash /opt/plexguide/menu/serverid/serverid.sh
+    bash /opt/plexguide/menu/interface/serverid.sh
     primaryinterface
   elif [ "$typed" == "4" ]; then
-    bash /opt/plexguide/menu/data/location.sh
+    bash /opt/pgvault/location.sh
     primaryinterface
   elif [[ "$typed" == "Z" || "$typed" == "z" ]]; then
     exit
