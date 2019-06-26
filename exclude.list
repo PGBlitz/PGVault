@@ -5,3 +5,13 @@
 ./transcoding-temp
 ./log
 ./logs
+./Log
+./Logs
+*.log
+*log.txt*
+./backup
+./backups
+./Backup
+./Backups
+./transcodes
+./Transcodes
