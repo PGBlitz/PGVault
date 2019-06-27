@@ -7,8 +7,6 @@
 ./logs
 ./Log
 ./Logs
-*.log
-*log.txt*
 ./backup
 ./backups
 ./Backup
