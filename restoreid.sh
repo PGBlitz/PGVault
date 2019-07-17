@@ -18,7 +18,7 @@ prior server names, visit https://drive.google.com - From here, goto
 EOF
 
 # Standby
-read -p 'TYPE the Restore ID Name & Press [ENTER]: ' typed < /dev/tty
+read -p 'TYPE the Restore ID Name & Press [ENTER]: ' typed </dev/tty
 
 tee <<-EOF
 
@@ -27,49 +27,49 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  if [ "$typed" == "" ]; then
-tee <<-EOF
+if [ "$typed" == "" ]; then
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! - The ID Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
-bash /opt/plexguide/menu/interface/serverid.sh
-exit
+  sleep 3
+  bash /opt/plexguide/menu/interface/serverid.sh
+  exit
 else
 
   # Recalls for to check existance
   rcheck=$(rclone --config /opt/appdata/plexguide/rclone.conf ls gdrive:/plexguide/backup/$typed)
   if [ "$rcheck" == "" ]; then
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! - This Server Does Not Exist! Exiting! (Case Senstive)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  sleep 4
-  exit
+    sleep 4
+    exit
   fi
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️ PASS: Server Exists! Storing the Name of the Server!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-# Prevents From Repeating
-echo "$typed" > /var/plexguide/restore.id
+  # Prevents From Repeating
+  echo "$typed" >/var/plexguide/restore.id
 
-sleep 3
+  sleep 3
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌇  PASS: Process Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-read -n 1 -s -r -p "Press [ANY] Key to Continue "
+  read -n 1 -s -r -p "Press [ANY] Key to Continue "
 
 fi

@@ -24,7 +24,7 @@ NOTE: Start with a / and end with no trailing slash!
 EOF
 
 # Standby
-read -p 'TYPE the Location & Press [ENTER]: ' typed < /dev/tty
+read -p 'TYPE the Location & Press [ENTER]: ' typed </dev/tty
 
 tee <<-EOF
 
@@ -33,19 +33,19 @@ tee <<-EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
 
-  if [ "$typed" == "" ]; then
-tee <<-EOF
+if [ "$typed" == "" ]; then
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! - The ID Cannot Be Blank!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-sleep 3
-bash /opt/plexguide/menu/interface/serverid.sh
-exit
+  sleep 3
+  bash /opt/plexguide/menu/interface/serverid.sh
+  exit
 else
 
-##################################################### TYPED CHECKERS - START
+  ##################################################### TYPED CHECKERS - START
   typed2=$typed
   bonehead=no
   ##### If BONEHEAD forgot to add a / in the beginning, we fix for them
@@ -63,7 +63,7 @@ else
 
   ##### Notify User is a Bonehead
   if [ "$bonehead" == "yes" ]; then
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ ALERT! We fixed the typos for you! Yes, Your Welcome!
@@ -73,44 +73,44 @@ You Typed : $typed2
 Changed To: $typed
 
 EOF
-read -n 1 -s -r -p "Press [ANY KEY] to Continue "
-echo ""
+    read -n 1 -s -r -p "Press [ANY KEY] to Continue "
+    echo ""
   fi
 
-#################################################### TYPED CHECKERS - END
+  #################################################### TYPED CHECKERS - END
 
   mkdir "$typed/pgcheck" &>/dev/null
   # Recalls for to check existance
   rcheck=$(ls -la $typed | grep "\<pgcheck\>")
   if [ "$rcheck" == "" ]; then
-tee <<-EOF
+    tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⛔️ WARNING! - This Location Does Not Exist! Exiting! (Case Senstive)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-  sleep 4
-  exit
+    sleep 4
+    exit
   fi
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ✅️ PASS: Location! Storing the Name of the Location!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
-# Prevents From Repeating
-rm -rf $typed/pgcheck
-sleep 3
+  # Prevents From Repeating
+  rm -rf $typed/pgcheck
+  sleep 3
 
-tee <<-EOF
+  tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌇  PASS: Process Complete!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-echo "$typed" > /var/plexguide/data.location
-read -n 1 -s -r -p "Press [ANY] Key to Continue "
+  echo "$typed" >/var/plexguide/data.location
+  read -n 1 -s -r -p "Press [ANY] Key to Continue "
 
 fi
