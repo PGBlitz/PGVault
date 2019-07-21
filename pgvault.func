@@ -51,7 +51,7 @@ final() {
 
 queued() {
   echo
-  read -p '⛔️ ERROR - APP Already Queued! | Press [ENTER] ' typed </dev/tty
+  read -p "⛔️ ERROR - $typed Already Queued! | Press [ENTER] " typed </dev/tty
 }
 
 badserver() {
@@ -513,6 +513,7 @@ primaryinterface() {
 [2] Data Restore
 [3] Current Server ID  : $server_id
 [4] Processing Location: $tarlocation
+
 [Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
