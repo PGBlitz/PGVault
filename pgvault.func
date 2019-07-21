@@ -333,6 +333,29 @@ EOF
 ######################################################## END - PG Vault Backup
 #
 ##################################################### START - PG Vault Restore
+restore_all_start() {
+
+  while read p; do
+    tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PG Vault - Restoring: $p
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+    sleep 2.5
+
+    # Store Used Program
+    echo $p >/tmp/program_var
+    # Execute Main Program
+    restore_process
+
+    sleep 2
+  done </var/plexguide/pgvault.apprecall
+  final
+}
+
+
 restore_start() {
 
   while read p; do
@@ -506,9 +529,12 @@ $buildup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
+  read -p '🌍 Type APP for QUEUE | Type all to restore all apps | Press [ENTER]: ' typed </dev/tty
+
+  if [[ "$typed" == "all" || "$typed" == "All" || "$typed" == "ALL" ]]; then restore_all_start; fi
 
   if [[ "$typed" == "restore" || "$typed" == "a" || "$typed" == "A" ]]; then restore_start; fi
+
   if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then exit; fi
 
   current2=$(cat /var/plexguide/pgvault.buildup | grep "\<$typed\>")
