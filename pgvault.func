@@ -207,6 +207,29 @@ buildup2() {
 ################################################ FOR RESTORE - END
 
 ######################################################## START - PG Vault Backup
+
+backup_all_start() {
+
+  while read p; do
+    tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PG Vault - Backing Up: $p
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+
+    sleep 2.5
+
+    # Store Used Program
+    echo $p >/tmp/program_var
+    # Execute Main Program
+    backup_process
+
+    sleep 2
+  done </var/plexguide/pgvault.apprecall
+  final
+}
+
 backup_start() {
   while read p; do
     tee <<-EOF
@@ -434,8 +457,11 @@ $buildup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  read -p '🌍 Type APP for QUEUE | Press [ENTER]: ' typed </dev/tty
+  read -p '🌍 Type APP for QUEUE | Type all to backup all apps | Press [ENTER]: ' typed </dev/tty
 
+  if [[ "$typed" == "all" || "$typed" == "All" || "$typed" == "ALL" ]]; then
+    backup_all_start
+  fi
   if [[ "$typed" == "backup" || "$typed" == "a" || "$typed" == "A" ]]; then backup_start; fi
   if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then exit; fi
 
