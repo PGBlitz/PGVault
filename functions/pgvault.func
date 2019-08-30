@@ -219,7 +219,7 @@ PG Vault - Backing Up: $p
 
 EOF
 
-    sleep 2.5
+    sleep 1.5
 
     # Store Used Program
     echo $p >/tmp/program_var
@@ -241,7 +241,7 @@ PG Vault - Backing Up: $p
 
 EOF
 
-    sleep 2.5
+    sleep 1.5
 
     # Store Used Program
     echo $p >/tmp/program_var
@@ -350,7 +350,7 @@ PG Vault - Restoring: $p
 
 EOF
 
-    sleep 2.5
+    sleep 1.5
 
     # Store Used Program
     echo $p >/tmp/program_var
@@ -374,7 +374,7 @@ PG Vault - Restoring: $p
 
 EOF
 
-    sleep 2.5
+    sleep 1.5
 
     # Store Used Program
     echo $p >/tmp/program_var
