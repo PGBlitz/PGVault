@@ -5,6 +5,8 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
+source /pg/pgvault/functions/initial.sh
+source /pg/pgvault/functions/restorecheck.sh 
 
 # BAD INPUT
 badinput() {

@@ -5,39 +5,12 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
+source /pg/pgvault/functions/functions.sh
+
 runningcheck() {
   initial2
   runcheck5=$(docker ps | grep ${program_var})
   if [ "$runcheck5" != "" ]; then running=1; else running=0; fi
-}
-
-initial() {
-  rm -rf /pg/var/pgvault.output 1>/dev/null 2>&1
-  rm -rf /pg/var/pgvault.buildup 1>/dev/null 2>&1
-  rm -rf /pg/var/program.temp 1>/dev/null 2>&1
-  rm -rf /pg/var/app.list 1>/dev/null 2>&1
-  rm -rf /pg/var/pgvault.output 1>/dev/null 2>&1
-  touch /pg/var/pgvault.output
-  touch /pg/var/program.temp
-  touch /pg/var/app.list
-  touch /pg/var/pgvault.buildup
-  touch /pg/var/pgvault.output
-  touch /pg/var/rclone.size
-  space=$(cat /pg/var/data.location)
-  # To Get Used Space
-  used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
-  # To Get All Space
-  capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
-  # Percentage
-  percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
-}
-
-initial2() {
-  path=$(cat /pg/var/server.hd.path)
-  tarlocation=$(cat /pg/var/data.location)
-  program_size=$(cat /pg/var/rclone.size)
-  program_var=$(cat /tmp/program_var)
-  server_id=$(cat /pg/var/server.id)
 }
 
 final() {
@@ -607,19 +580,3 @@ EOF
   fi
 }
 ##################################################### END Primary Interface
-
-restorecheck() {
-  if [ "$restoreid" == "[NOT-SET]" ]; then
-    tee <<-EOF
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-⛔️  WARNING! - You Must Set Your Recovery ID First! Restarting Process!
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-EOF
-    read -n 1 -s -r -p "Press [ANY] Key to Continue "
-    echo
-    primaryinterface
-    exit
-  fi
-}
