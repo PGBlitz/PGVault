@@ -539,7 +539,7 @@ primaryinterface() {
   tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📁  PG Vault Interface ~ 📓 Reference: pgvault.pgblitz.com
+📁  PG Vault Interface ~ http://pgvault.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
 
