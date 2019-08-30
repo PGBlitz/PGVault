@@ -12,11 +12,11 @@ initial() {
   touch /pg/var/rclone.size
   space=$(cat /pg/var/data.location)
   # To Get Used Space
-  used=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $3}')
+  used=$(df -h /pg/var/ | tail -n +2 | awk '{print $3}')
   # To Get All Space
-  capacity=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $2}')
+  capacity=$(df -h /pg/var/ | tail -n +2 | awk '{print $2}')
   # Percentage
-  percentage=$(df -h /opt/appdata/plexguide | tail -n +2 | awk '{print $5}')
+  percentage=$(df -h /pg/var/ | tail -n +2 | awk '{print $5}')
 }
 
 initial2() {
