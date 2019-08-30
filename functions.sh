@@ -23,10 +23,6 @@ variable() {
   if [ ! -e "$file" ]; then echo "$2" >$1; fi
 }
 
-removemounts() {
-  ansible-playbook /opt/plexguide/menu/remove/mounts.yml
-}
-
 readrcloneconfig() {
   touch /pg/rclone/rclone.conf
   mkdir -p /pg/rclone
@@ -48,7 +44,6 @@ readrcloneconfig() {
   sccheck=$(cat /pg/rclone/blitz.conf | grep sc)
   if [[ "$sccheck" != "" ]]; then echo "good" >/pg/var/sc.status && scstatus="good"
   else echo "bad" >/pg/var/sc.status && scstatus="bad"; fi
-
 }
 
 rcloneconfig() {
