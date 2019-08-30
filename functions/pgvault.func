@@ -541,7 +541,6 @@ primaryinterface() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📁  PG Vault Interface ~ 📓 Reference: pgvault.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 🌵  PG Disk Used Space: $used of $capacity | $percentage Used Capacity
 
 [1] Data Backup
@@ -549,6 +548,7 @@ primaryinterface() {
 [3] Current Server ID  : $server_id
 [4] Processing Location: $tarlocation
 [Z] Exit
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
   read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
