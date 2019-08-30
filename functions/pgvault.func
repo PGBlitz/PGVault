@@ -124,7 +124,7 @@ serverprime() {
 
 $servers
 
-[Z] Exit
+[Z] EXIT INTERFACE
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -461,9 +461,8 @@ $buildup
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [A] Backup
-[Z] Exit
+[Z] EXIT INTERFACE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
   read -p '🌍 Type APP for QUEUE | Type all to backup all apps | Press [ENTER]: ' typed </dev/tty
 
@@ -510,9 +509,8 @@ $buildup
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [A] Restore
-[Z] Exit
+[Z] EXIT INTERFACE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
   read -p '🌍 Type APP for QUEUE | Type all to restore all apps | Press [ENTER]: ' typed </dev/tty
 
@@ -550,11 +548,8 @@ primaryinterface() {
 [2] Data Restore
 [3] Current Server ID  : $server_id
 [4] Processing Location: $tarlocation
-
+[Z] EXIT INTERFACE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[Z] Exit
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
 EOF
   read -p 'Type a Number | Press [ENTER]: ' typed </dev/tty
 
