@@ -47,10 +47,5 @@ readrcloneconfig() {
 }
 
 rcloneconfig() {
-  rclone config --config /opt/appdata/plexguide/rclone.conf
-}
-
-keysprocessed() {
-  mkdir -p /opt/appdata/plexguide/keys/processed
-  ls -1 /opt/appdata/plexguide/keys/processed | wc -l >/pg/var/project.keycount
+  rclone config --config /pg/rclone/blitz.conf
 }
