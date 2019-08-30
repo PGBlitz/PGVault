@@ -114,7 +114,7 @@ EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  echo "$typed" >/var/plexguide/data.location
+  echo "$typed" >/pg/var/data.location
   read -n 1 -s -r -p "Press [ANY] Key to Continue "
 
 fi

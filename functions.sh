@@ -29,22 +29,22 @@ removemounts() {
 
 readrcloneconfig() {
   touch /opt/appdata/plexguide/rclone.conf
-  mkdir -p /var/plexguide/rclone/
+  mkdir -p /pg/var/rclone/
 
   gdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep gdrive)
   if [ "$gdcheck" != "" ]; then
-    echo "good" >/var/plexguide/rclone/gdrive.status && gdstatus="good"
-  else echo "bad" >/var/plexguide/rclone/gdrive.status && gdstatus="bad"; fi
+    echo "good" >/pg/var/rclone/gdrive.status && gdstatus="good"
+  else echo "bad" >/pg/var/rclone/gdrive.status && gdstatus="bad"; fi
 
   gccheck=$(cat /opt/appdata/plexguide/rclone.conf | grep "remote = gdrive:/encrypt")
   if [ "$gccheck" != "" ]; then
-    echo "good" >/var/plexguide/rclone/gcrypt.status && gcstatus="good"
-  else echo "bad" >/var/plexguide/rclone/gcrypt.status && gcstatus="bad"; fi
+    echo "good" >/pg/var/rclone/gcrypt.status && gcstatus="good"
+  else echo "bad" >/pg/var/rclone/gcrypt.status && gcstatus="bad"; fi
 
   tdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep tdrive)
   if [ "$tdcheck" != "" ]; then
-    echo "good" >/var/plexguide/rclone/tdrive.status && tdstatus="good"
-  else echo "bad" >/var/plexguide/rclone/tdrive.status && tdstatus="bad"; fi
+    echo "good" >/pg/var/rclone/tdrive.status && tdstatus="good"
+  else echo "bad" >/pg/var/rclone/tdrive.status && tdstatus="bad"; fi
 
 }
 
@@ -54,5 +54,5 @@ rcloneconfig() {
 
 keysprocessed() {
   mkdir -p /opt/appdata/plexguide/keys/processed
-  ls -1 /opt/appdata/plexguide/keys/processed | wc -l >/var/plexguide/project.keycount
+  ls -1 /opt/appdata/plexguide/keys/processed | wc -l >/pg/var/project.keycount
 }

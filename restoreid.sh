@@ -63,7 +63,7 @@ EOF
 
 EOF
   # Prevents From Repeating
-  echo "$typed" >/var/plexguide/restore.id
+  echo "$typed" >/pg/var/restore.id
 
   sleep 3
 
