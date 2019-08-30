@@ -28,23 +28,26 @@ removemounts() {
 }
 
 readrcloneconfig() {
-  touch /opt/appdata/plexguide/rclone.conf
-  mkdir -p /pg/var/rclone/
+  touch /pg/rclone/rclone.conf
+  mkdir -p /pg/rclone
+  chown -R 1000:1000 /pg/rclone
+  chown 0755 -R /pg/rclone
 
-  gdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep gdrive)
-  if [ "$gdcheck" != "" ]; then
-    echo "good" >/pg/var/rclone/gdrive.status && gdstatus="good"
-  else echo "bad" >/pg/var/rclone/gdrive.status && gdstatus="bad"; fi
+  gdcheck=$(cat /pg/rclone/blitz.conf | grep gd)
+  if [[ "$gdcheck" != "" ]]; then echo "good" >/pg/var/gd.status && gdstatus="good"
+  else echo "bad" >/pg/var/gd.status && gdstatus="bad"; fi
 
-  gccheck=$(cat /opt/appdata/plexguide/rclone.conf | grep "remote = gdrive:/encrypt")
-  if [ "$gccheck" != "" ]; then
-    echo "good" >/pg/var/rclone/gcrypt.status && gcstatus="good"
-  else echo "bad" >/pg/var/rclone/gcrypt.status && gcstatus="bad"; fi
+  sdcheck=$(cat /pg/rclone/blitz.conf | grep sd)
+  if [[ "$sdcheck" != "" ]]; then echo "good" >/pg/var/sd.status && sdstatus="good"
+  else echo "bad" >/pg/var/sd.status && sdstatus="bad"; fi
 
-  tdcheck=$(cat /opt/appdata/plexguide/rclone.conf | grep tdrive)
-  if [ "$tdcheck" != "" ]; then
-    echo "good" >/pg/var/rclone/tdrive.status && tdstatus="good"
-  else echo "bad" >/pg/var/rclone/tdrive.status && tdstatus="bad"; fi
+  gccheck=$(cat /pg/rclone/blitz.conf | grep gc)
+  if [[ "$gccheck" != "" ]]; then echo "good" >/pg/var/gc.status && gcstatus="good"
+  else echo "bad" >/pg/var/gc.status && gcstatus="bad"; fi
+
+  sccheck=$(cat /pg/rclone/blitz.conf | grep sc)
+  if [[ "$sccheck" != "" ]]; then echo "good" >/pg/var/sc.status && scstatus="good"
+  else echo "bad" >/pg/var/sc.status && scstatus="bad"; fi
 
 }
 

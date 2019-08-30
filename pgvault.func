@@ -65,10 +65,10 @@ rclonelist() {
 }
 
 pgboxrecall() {
-  ls -p /opt/coreapps/apps | grep -v / >/pg/var/pgvault.apprecall
+  ls -p /pg/apps/programs | grep -v / >/pg/var/pgvault.apprecall
   while read p; do
     sed -i "/^$p\b/Id" /pg/var/pgvault.apprecall
-  done </pg/pgvault/exempt.list
+  done </pg/tmp/exempt.list
 
   while read p; do
     sed -i "/^$p\b/Id" /pg/var/pgvault.apprecall
@@ -96,7 +96,7 @@ apprecall() {
   tree -d -L 1 /opt/appdata | awk '{print $2}' | tail -n +2 | head -n -2 >/pg/var/pgvault.apprecall
   while read p; do
     sed -i "/^$p\b/Id" /pg/var/pgvault.apprecall
-  done </pg/pgvault/exempt.list
+  done </pg/tmp/exempt.list
 
   ### Blank Out Temp List
   rm -rf /pg/var/program.temp && touch /pg/var/program.temp

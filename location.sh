@@ -15,8 +15,8 @@ location is very important! Keep in mind PG does not format the
 location for you!
 
 Examples:
-1. /opt/appdata/plexguide
-2. /hd2/spongebob
+1. /pg/tmp           3. /myotherhd/pgblitz
+2. /hd2/spongebob    4. /hd2/mybackups
 
 NOTE: Start with a / and end with no trailing slash!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
