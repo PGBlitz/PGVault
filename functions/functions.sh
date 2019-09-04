@@ -6,6 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 source /pg/pgvault/functions/initial.sh
+source /pg/pgvault/functions/functions.sh
 
 # BAD INPUT
 badinput() {

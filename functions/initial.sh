@@ -5,7 +5,10 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-source /pg/pgvault/functions/functions.sh
+variable() {
+  file="$1"
+  if [ ! -e "$file" ]; then echo "$2" >$1; fi
+}
 
 initial() {
   rm -rf /pg/var/pgvault.output 1>/dev/null 2>&1
@@ -38,7 +41,7 @@ initial2() {
   if [ ! -e "$file" ]; then
     echo "NO_ID" >/pg/var/restore.id
   fi
-  
+
   path=$(cat /pg/var/server.hd.path)
   tarlocation=$(cat /pg/var/tar.location)
   program_size=$(cat /pg/var/rclone.size)
