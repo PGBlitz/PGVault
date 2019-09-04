@@ -343,12 +343,12 @@ EOF
 
 EOF
 
-  rclone --config /pg/rclone/blitz.conf mkdir gdrive:/plexguide/backup/${server_id} 1>/dev/null 2>&1
+  rclone --config /pg/rclone/blitz.conf mkdir gd:/plexguide/backup/${server_id} 1>/dev/null 2>&1
 
   rclone --config /pg/rclone/blitz.conf \
     --stats-one-line --stats 1s --progress \
     moveto ${tarlocation}/${program_var}.tar \
-    gdrive:/plexguide/backup/${server_id}/${program_var}.tar \
+    gd:/plexguide/backup/${server_id}/${program_var}.tar \
     -v --checksum --drive-chunk-size=64M --transfers=8
 
   ##### Remove File Incase
@@ -430,7 +430,7 @@ EOF
 
   rclone --config /pg/rclone/blitz.conf --stats-one-line \
     --stats 1s --progress \
-    copy gdrive:/plexguide/backup/${srecall}/${program_var}.tar \
+    copy gd:/plexguide/backup/${srecall}/${program_var}.tar \
     ${tarlocation} \
     -v --checksum --drive-chunk-size=64M --transfers=8
 

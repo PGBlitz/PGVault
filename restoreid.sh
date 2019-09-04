@@ -42,7 +42,7 @@ EOF
 else
 
   # Recalls for to check existance
-  rcheck=$(rclone --config /pg/rclone/blitz.conf ls gdrive:/plexguide/backup/$typed)
+  rcheck=$(rclone --config /pg/rclone/blitz.conf ls gd:/plexguide/backup/$typed)
   if [ "$rcheck" == "" ]; then
     tee <<-EOF
 
