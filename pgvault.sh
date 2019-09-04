@@ -6,7 +6,6 @@
 # GNU:        General Public License v3.0
 ################################################################################
 source /pg/pgvault/functions/functions.sh
-source /pg/pgvault/functions/pgvault.func
 
 initial
 apprecall
