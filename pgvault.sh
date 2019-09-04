@@ -7,10 +7,6 @@
 ################################################################################
 source /pg/pgvault/functions/functions.sh
 source /pg/pgvault/functions/pgvault.func
-file="/pg/var/restore.id"
-if [ ! -e "$file" ]; then
-  echo "[NOT-SET]" >/pg/var/restore.id
-fi
 
 initial
 apprecall
