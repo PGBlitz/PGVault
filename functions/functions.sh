@@ -6,7 +6,7 @@
 # GNU:        General Public License v3.0
 ################################################################################
 source /pg/pgvault/functions/initial.sh
-source /pg/pgvault/functions/functions.sh
+source /pg/pgvault/functions/restorecheck.sh
 
 # BAD INPUT
 badinput() {
