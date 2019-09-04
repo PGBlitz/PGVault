@@ -66,7 +66,7 @@ mathprime() {
 
 ################################################ FOR BACKUP - START
 apprecall() {
-  tree -d -L 1 /opt/appdata | awk '{print $2}' | tail -n +2 | head -n -2 >/pg/var/pgvault.apprecall
+  tree -d -L 1 /pg/data | awk '{print $2}' | tail -n +2 | head -n -2 >/pg/var/pgvault.apprecall
   while read p; do
     sed -i "/^$p\b/Id" /pg/var/pgvault.apprecall
   done </pg/pgvault/exempt.list
@@ -234,7 +234,7 @@ backup_process() {
   #↘️  Determining Initial File Size - $program_var
   #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   #EOF
-  #size=$(du -sh --apparent-size /opt/appdata/$program_var | /usr/bin/awk '{print $1}')
+  #size=$(du -sh --apparent-size /pg/data/$program_var | /usr/bin/awk '{print $1}')
   #sleep 2
   #echo "Initial File Size: $size"
   #sleep 2
@@ -269,12 +269,12 @@ EOF
   tar \
     --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
     --exclude-from=/pg/pgvault/exclude.list \
-    -C /opt/appdata/${program_var} -cvf /pg/var//${program_var}.tar ./
+    -C /pg/data/${program_var} -cvf /pg/var//${program_var}.tar ./
 
   #tar \
   #--warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
   #--exclude-from=/pg/pgvault/exclude.list \
-  #-cfv ${program_var}.tar /opt/appdata/${program_var}
+  #-cfv ${program_var}.tar /pg/data/${program_var}
 
   ##### Restart Docker Application if was Running Prior
   if [ "$running" == "1" ]; then
@@ -412,13 +412,13 @@ EOF
 
 EOF
 
-  mkdir -p "/opt/appdata/${program_var}"
-  rm -rf "/opt/appdata/${program_var}/*"
-  chown -R 1000:1000 "/opt/appdata/${program_var}"
-  chmod -R 775 "/opt/appdata/${program_var}"
-  tar -C /opt/appdata/${program_var} -xvf ${tarlocation}/${program_var}.tar
-  chown -R 1000:1000 "/opt/appdata/${program_var}"
-  chmod -R 775 "/opt/appdata/${program_var}"
+  mkdir -p "/pg/data/${program_var}"
+  rm -rf "/pg/data/${program_var}/*"
+  chown -R 1000:1000 "/pg/data/${program_var}"
+  chmod -R 775 "/pg/data/${program_var}"
+  tar -C /pg/data/${program_var} -xvf ${tarlocation}/${program_var}.tar
+  chown -R 1000:1000 "/pg/data/${program_var}"
+  chmod -R 775 "/pg/data/${program_var}"
 
   ##### Restart Docker Application if was Running Prior
   if [ "$running" == "1" ]; then
@@ -562,7 +562,7 @@ EOF
     primaryinterface
   elif [ "$typed" == "3" ]; then
     echo "0" >/pg/var/server.id.stored
-    bash /opt/plexguide/menu/interface/serverid.sh
+    bash /pg/pgblitz/menu/interface/serverid.sh
     primaryinterface
   elif [ "$typed" == "4" ]; then
     bash /pg/pgvault/location.sh
