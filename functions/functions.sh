@@ -314,7 +314,7 @@ EOF
   tar \
     --warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
     --exclude-from=/pg/pgvault/exclude.list \
-    -C /pg/data/${program_var} -cvf /pg/var//${program_var}.tar ./
+    -C /pg/data/${program_var} -cvf ${tarlocation}/${program_var}.tar ./
 
   #tar \
   #--warning=no-file-changed --ignore-failed-read --absolute-names --warning=no-file-removed \
@@ -414,7 +414,7 @@ restore_process() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 EOF
-  size=$(du -sh --apparent-size /mnt/gdrive/plexguide/backup/${srecall}/${program_var}.tar | /usr/bin/awk '{print $1}')
+  size=$(du -sh --apparent-size /pg/gd/plexguide/backup/${srecall}/${program_var}.tar | /usr/bin/awk '{print $1}')
   sleep 2
   echo "Initial File Size: $size"
   sleep 2
